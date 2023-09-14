@@ -7,31 +7,15 @@
 
 import SwiftUI
 
-enum Role: Int, CaseIterable, Identifiable {
-    case faculty = 1
-    case student = 2
-    
-    var id: Int {
-        return self.rawValue
-    }
-}
-
-extension Role {
-    var title: String {
-        switch self {
-            case .faculty:
-                return "Faculty"
-            case .student:
-                return "Student"
-        }
-    }
-}
-
 struct RegistrationScreen: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var selectedRole: Role = .student
+    
+    private var isFormValid: Bool {
+        return !email.isEmptyOrWhitespace && !password.isEmptyOrWhitespace && email.isEmail
+    }
     
     var body: some View {
         Form {
@@ -45,11 +29,15 @@ struct RegistrationScreen: View {
             TextField("Password", text: $password)
             
             Button(action: {
-                // action
+                
+                // perform action
+                
+                
             }, label: {
                 Text("Register")
                     .frame(maxWidth: .infinity)
             }).buttonStyle(.borderedProminent)
+            .disabled(!isFormValid)
             
         }.navigationTitle("Registration")
             
