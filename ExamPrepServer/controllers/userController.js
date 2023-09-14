@@ -1,5 +1,4 @@
 
-
 const { body, validationResult } = require('express-validator') 
 
 exports.register = async (req, res) => {
@@ -9,6 +8,8 @@ exports.register = async (req, res) => {
         res.status(400).json({ errors: errors.array() })
         return 
     }
+
+    // register the user 
 
     res.send('OK')
 }
