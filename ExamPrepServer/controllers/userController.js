@@ -1,4 +1,5 @@
 
+const bcrypt = require('bcryptjs') 
 const { body, validationResult } = require('express-validator')
 const models = require('../models')
 
@@ -8,7 +9,7 @@ exports.register = async (req, res) => {
 
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        res.status(400).json({ error: errors.array().map(error => error.msg).join(' ') })
+        res.status(400).json({ success: false, message: errors.array().map(error => error.msg).join(' ') })
         return
     }
 
@@ -21,15 +22,19 @@ exports.register = async (req, res) => {
 
     if (user) {
         // already exists 
-        res.status(400).json({ error: 'Email is already registered.' })
+        res.status(400).json({ success: false, message: 'Email is already registered.' })
         return
     }
 
     try {
+
+        // hash the password 
+        const hashedPassword = await bcrypt.hash(password, 10)
+
         // register new user 
         const newUser = await models.User.create({
             email: email,
-            password: password // need to bcrypt the password 
+            password: hashedPassword
         })
 
         // 201 for created and send the new user back 
@@ -37,7 +42,7 @@ exports.register = async (req, res) => {
 
     } catch(error) {
         console.error(error)
-        res.status(500).json({error: 'Internal server error'})
+        res.status(500).json({success: false, message: 'Internal server error'})
     }
 }
 
