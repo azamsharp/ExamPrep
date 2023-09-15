@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "sktpcfal",
+    "password": "AlhXKn0WLc9UXrTNuW9IYoqtr_rt9myW",
+    "database": "sktpcfal",
+    "host": "berry.db.elephantsql.com",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
