@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegistrationScreen: View {
+struct LoginScreen: View {
     
     @Environment(\.showMessage) private var showMessage
     @Environment(\.navigate) private var navigate
@@ -15,14 +15,12 @@ struct RegistrationScreen: View {
     
     @State private var email: String = "azamsharp@gmail.com"
     @State private var password: String = "password123"
-    @State private var selectedRole: Role = .student
-    @State private var registering: Bool = false
     
     private var isFormValid: Bool {
         return !email.isEmptyOrWhitespace && !password.isEmptyOrWhitespace && email.isEmail
     }
     
-    private func register() async {
+    private func login() async {
        
         do {
             let registrationResponse = try await account.register(email: email, password: password)
@@ -41,44 +39,36 @@ struct RegistrationScreen: View {
     
     var body: some View {
         Form {
-            Picker("Role", selection: $selectedRole) {
-                ForEach(Role.allCases) { role in
-                    Text(role.title)
-                        .tag(role)
-                }
-            }.pickerStyle(.segmented)
+            
             TextField("Email", text: $email)
             SecureField("Password", text: $password)
             
             Button(action: {
-                registering = true
+                
+                Task {
+                    await login()
+                }
+                
             }, label: {
-                Text("Register")
+                Text("Login")
                     .frame(maxWidth: .infinity)
             }).buttonStyle(.borderedProminent)
             .disabled(!isFormValid)
-            .task(id: registering) {
-                if registering {
-                    await register()
-                    registering = false
-                }
-            }
             
-        }.navigationTitle("Registration")
+        }.navigationTitle("Login")
             
     }
 }
 
-struct RegistrationContainerScreen: View {
+struct LoginContainerScreen: View {
     var body: some View {
-        RegistrationScreen()
+        LoginScreen()
             .environment(Account(httpClient: HTTPClient.shared))
     }
 }
 
 #Preview {
-    
     NavigationStack {
-        RegistrationContainerScreen()
+        LoginContainerScreen()
     }
 }

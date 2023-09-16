@@ -10,6 +10,7 @@
 		8D13288A2AB09F92002C1217 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1328892AB09F92002C1217 /* Role.swift */; };
 		8D13288D2AB09FFE002C1217 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D13288C2AB09FFE002C1217 /* String+Extensions.swift */; };
 		8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC52AB5323F00EE6F50 /* Route.swift */; };
+		8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC72AB5607100EE6F50 /* LoginScreen.swift */; };
 		8D51D6822AB4C87700B962AC /* RegistrationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D51D6812AB4C87700B962AC /* RegistrationError.swift */; };
 		8DB2B6A32AB01D9700ADA823 /* ExamPrepClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2B6A22AB01D9700ADA823 /* ExamPrepClientApp.swift */; };
 		8DB2B6A52AB01D9700ADA823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2B6A42AB01D9700ADA823 /* ContentView.swift */; };
@@ -31,6 +32,7 @@
 		8D1328892AB09F92002C1217 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		8D13288C2AB09FFE002C1217 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		8D193EC52AB5323F00EE6F50 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		8D193EC72AB5607100EE6F50 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		8D51D6812AB4C87700B962AC /* RegistrationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationError.swift; sourceTree = "<group>"; };
 		8DB2B69F2AB01D9700ADA823 /* ExamPrepClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExamPrepClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB2B6A22AB01D9700ADA823 /* ExamPrepClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPrepClientApp.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8DB2B6B12AB01E1800ADA823 /* RegistrationScreen.swift */,
+				8D193EC72AB5607100EE6F50 /* LoginScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				8DCCC3362AB4B349002CCF77 /* MessageWrapper.swift in Sources */,
 				8DB2B6B22AB01E1800ADA823 /* RegistrationScreen.swift in Sources */,
 				8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */,
+				8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */,
 				8DCCC3382AB4B37E002CCF77 /* ShowErrorKey.swift in Sources */,
 				8DCCC3292AB4A138002CCF77 /* HTTPClient.swift in Sources */,
 				8DCCC3332AB4AF54002CCF77 /* Account.swift in Sources */,
