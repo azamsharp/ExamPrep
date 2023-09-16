@@ -9,8 +9,7 @@ import Foundation
 
 struct MessageWrapper: Identifiable {
     let id = UUID()
-    let error: Error?
-    let guidance: String
+    let messageType: MessageType 
 }
 
 

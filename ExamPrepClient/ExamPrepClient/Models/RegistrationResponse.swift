@@ -9,4 +9,5 @@ import Foundation
 
 struct RegistrationResponse: Codable {
     let success: Bool 
+    var message: String = ""
 }

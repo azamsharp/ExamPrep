@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+enum RegistrationError: LocalizedError {
+    
+    case emailAlreadyRegistered
+    
+    var errorDescription: String? {
+        switch self {
+            case .emailAlreadyRegistered:
+                return "Email is already registered."
+        }
+    }
+}

@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum SampleError: Error {
+    case operationFailed 
+}
