@@ -10,28 +10,28 @@ import SwiftUI
 struct RegistrationScreen: View {
     
     @Environment(\.showMessage) private var showMessage
+    @Environment(\.navigate) private var navigate
     @Environment(Account.self) private var account
     
     @State private var email: String = "azamsharp@gmail.com"
     @State private var password: String = "password123"
     @State private var selectedRole: Role = .student
+    @State private var registering: Bool = false
     
     private var isFormValid: Bool {
         return !email.isEmptyOrWhitespace && !password.isEmptyOrWhitespace && email.isEmail
     }
     
     private func register() async {
-       
         do {
-            let registrationResponse = try await account.register(email: email, password: password)
-            if registrationResponse.success {
-                // navigate to the dashboard screen
+            let response = try await account.register(email: email, password: password)
+            if response.success {
+                navigate(.login)
             } else {
-                showMessage(.info(registrationResponse.message))
+                showMessage(.info(response.message))
             }
-            
         } catch {
-            showMessage(.error(error, "Error registering user. Please try again."))
+            showMessage(.error(error, MessageConstants.unableToProcessRequest))
         }
     }
     
@@ -47,32 +47,39 @@ struct RegistrationScreen: View {
             SecureField("Password", text: $password)
             
             Button(action: {
-                
-                Task {
-                    await register()
-                }
-                
+                registering = true
             }, label: {
                 Text("Register")
                     .frame(maxWidth: .infinity)
             }).buttonStyle(.borderedProminent)
             .disabled(!isFormValid)
+            .task(id: registering) {
+                if registering {
+                    await register()
+                    registering = false
+                }
+            }
             
         }.navigationTitle("Registration")
-            
     }
 }
 
 struct RegistrationContainerScreen: View {
+    
+    @State private var routes: [Route] = []
+    
     var body: some View {
-        RegistrationScreen()
-            .environment(Account(httpClient: HTTPClient.shared))
+        NavigationStack(path: $routes) {
+            RegistrationScreen()
+                .environment(\.navigate) { route in
+                    routes.append(route)
+                }
+                .withRouting()
+        }.environment(Account(httpClient: HTTPClient.shared))
     }
 }
 
 #Preview {
-    
-    NavigationStack {
-        RegistrationContainerScreen()
-    }
+    RegistrationContainerScreen()
+      
 }

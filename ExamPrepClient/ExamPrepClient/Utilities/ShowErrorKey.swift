@@ -10,7 +10,7 @@ import SwiftUI
 
 enum MessageType {
     case error(Error, String)
-    case info(String)
+    case info(String?)
 }
 
 struct ShowMessageKey: EnvironmentKey {

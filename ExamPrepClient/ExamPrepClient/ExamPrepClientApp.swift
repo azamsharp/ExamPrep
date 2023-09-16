@@ -12,20 +12,26 @@ import SwiftUI
 struct ExamPrepClientApp: App {
     
     @State private var messageWrapper: MessageWrapper?
+    @State private var routes: [Route] = []
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationStack(path: $routes) {
                 RegistrationScreen()
-                    .environment(Account(httpClient: HTTPClient.shared))
+                    .environment(\.navigate) { route in
+                        routes.append(route)
+                    }
                     .environment(\.showMessage) { messageType in
                         messageWrapper = MessageWrapper(messageType: messageType)
                     }
-            }.sheet(item: $messageWrapper) { messageWrapper in
-                    MessageView(messageWrapper: messageWrapper)
-                    .presentationDetents([.fraction(0.1)])
-                    .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.1)))
-                }.scrollContentBackground(.hidden)
+                    .withRouting()
+            }
+            .environment(Account(httpClient: HTTPClient.shared))
+            .overlay(alignment: .bottom) {
+                if messageWrapper != nil {
+                    MessageView(messageWrapper: $messageWrapper)
+                }
+            }
         }
     }
 }
