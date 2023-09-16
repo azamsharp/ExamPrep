@@ -35,11 +35,22 @@ struct ExamPrepClientApp: App {
                                 Text("Dashboard")
                         }
                     }
-            }.sheet(item: $messageWrapper) { messageWrapper in
-                MessageView(messageWrapper: messageWrapper)
-                    .presentationDetents([.fraction(0.1)])
-                    .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.1)))
+            }
+            .overlay(alignment: .bottom) {
+                if let messageWrapper {
+                    MessageView(messageWrapper: messageWrapper)
+                }
+            }
+            /*
+            .sheet(item: $messageWrapper) { messageWrapper in
+                VStack {
+                    Spacer()
+                    MessageView(messageWrapper: messageWrapper)
+                        .presentationDetents([.medium])
+                        .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                }
             }.scrollContentBackground(.hidden)
+             */
                
         }
     }
