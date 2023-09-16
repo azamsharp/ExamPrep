@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct MessagesConstants {
+    static let errorRegistration = "We're sorry, but we couldn't complete your registration at this time. Please try again later."
+}
+
 struct APIConstants {
     
     static let baseURL = "http://localhost:8080"

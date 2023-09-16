@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D13288A2AB09F92002C1217 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1328892AB09F92002C1217 /* Role.swift */; };
 		8D13288D2AB09FFE002C1217 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D13288C2AB09FFE002C1217 /* String+Extensions.swift */; };
+		8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC52AB5323F00EE6F50 /* Route.swift */; };
 		8D51D6822AB4C87700B962AC /* RegistrationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D51D6812AB4C87700B962AC /* RegistrationError.swift */; };
 		8DB2B6A32AB01D9700ADA823 /* ExamPrepClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2B6A22AB01D9700ADA823 /* ExamPrepClientApp.swift */; };
 		8DB2B6A52AB01D9700ADA823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2B6A42AB01D9700ADA823 /* ContentView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		8D1328892AB09F92002C1217 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		8D13288C2AB09FFE002C1217 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		8D193EC52AB5323F00EE6F50 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8D51D6812AB4C87700B962AC /* RegistrationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationError.swift; sourceTree = "<group>"; };
 		8DB2B69F2AB01D9700ADA823 /* ExamPrepClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExamPrepClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB2B6A22AB01D9700ADA823 /* ExamPrepClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPrepClientApp.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8D193EC42AB5322F00EE6F50 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				8D193EC52AB5323F00EE6F50 /* Route.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		8DB2B6962AB01D9700ADA823 = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +105,10 @@
 		8DB2B6A12AB01D9700ADA823 /* ExamPrepClient */ = {
 			isa = PBXGroup;
 			children = (
+				8D193EC42AB5322F00EE6F50 /* Routing */,
 				8DF9E01B2AB4DB1300F8012F /* Views */,
 				8DCCC3342AB4B341002CCF77 /* Errors */,
 				8DCCC32D2AB4A61F002CCF77 /* Utilities */,
-				8DCCC32A2AB4A356002CCF77 /* Environment Values */,
 				8DCCC3272AB4A11F002CCF77 /* Network */,
 				8D13288B2AB09FF2002C1217 /* Extensions */,
 				8D1328882AB09F83002C1217 /* Models */,
@@ -131,23 +141,16 @@
 		8DCCC3272AB4A11F002CCF77 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8DCCC32B2AB4A37D002CCF77 /* HTTPClientKey.swift */,
 				8DCCC3282AB4A138002CCF77 /* HTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		8DCCC32A2AB4A356002CCF77 /* Environment Values */ = {
-			isa = PBXGroup;
-			children = (
-				8DCCC32B2AB4A37D002CCF77 /* HTTPClientKey.swift */,
-				8DCCC3372AB4B37E002CCF77 /* ShowErrorKey.swift */,
-			);
-			path = "Environment Values";
-			sourceTree = "<group>";
-		};
 		8DCCC32D2AB4A61F002CCF77 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8DCCC3372AB4B37E002CCF77 /* ShowErrorKey.swift */,
 				8DCCC32E2AB4A629002CCF77 /* Constants.swift */,
 			);
 			path = Utilities;
@@ -245,6 +248,7 @@
 				8DCCC32C2AB4A37D002CCF77 /* HTTPClientKey.swift in Sources */,
 				8DCCC3362AB4B349002CCF77 /* MessageWrapper.swift in Sources */,
 				8DB2B6B22AB01E1800ADA823 /* RegistrationScreen.swift in Sources */,
+				8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */,
 				8DCCC3382AB4B37E002CCF77 /* ShowErrorKey.swift in Sources */,
 				8DCCC3292AB4A138002CCF77 /* HTTPClient.swift in Sources */,
 				8DCCC3332AB4AF54002CCF77 /* Account.swift in Sources */,

@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationScreen: View {
     
     @Environment(\.showMessage) private var showMessage
+    @Environment(\.navigate) private var navigate
     @Environment(Account.self) private var account
     
     @State private var email: String = "azamsharp@gmail.com"
@@ -25,13 +26,15 @@ struct RegistrationScreen: View {
         do {
             let registrationResponse = try await account.register(email: email, password: password)
             if registrationResponse.success {
-                // navigate to the dashboard screen
+                navigate(.dashboard)
             } else {
-                showMessage(.info(registrationResponse.message))
+                if let message = registrationResponse.message {
+                    showMessage(.info(message))
+                }
             }
             
         } catch {
-            showMessage(.error(error, "Error registering user. Please try again."))
+            showMessage(.error(error, MessagesConstants.errorRegistration))
         }
     }
     
