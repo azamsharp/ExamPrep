@@ -6,6 +6,11 @@ require('dotenv').config()
 const { body, validationResult } = require('express-validator')
 const models = require('../models')
 
+exports.getRoles = async (req, res) => {
+    const roles = await models.Role.findAll({})
+    res.json(roles)
+}
+
 exports.login = async (req, res) => {
 
     const { email, password } = req.body
@@ -46,7 +51,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
 
-    const { email, password } = req.body
+    const { email, password, roleId } = req.body
 
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -75,7 +80,8 @@ exports.register = async (req, res) => {
         // register new user 
         const newUser = await models.User.create({
             email: email,
-            password: hashedPassword
+            password: hashedPassword, 
+            roleId: roleId 
         })
 
         // 201 for created and send the new user back 
@@ -93,7 +99,8 @@ exports.validate = (method) => {
         case 'register': {
             return [
                 body('email', 'Email cannot be empty.').exists().isEmail(),
-                body('password', 'Password must be at least 6 characters long').exists().isLength({ min: 6 })
+                body('password', 'Password must be at least 6 characters long').exists().isLength({ min: 6 }), 
+                body('roleId', 'Role must be provided.').exists() 
             ]
         }
         case 'login': {

@@ -13,7 +13,7 @@ enum NetworkError: Error {
     case decodingError(Error)
     case invalidResponse
     case invalidURL
-    case httpError(Int)
+    //case httpError(Int)
 }
 
 extension NetworkError: LocalizedError {
@@ -30,8 +30,8 @@ extension NetworkError: LocalizedError {
                 return NSLocalizedString("Invalid response", comment: "invalidResponse")
             case .invalidURL:
                 return NSLocalizedString("Invalid URL", comment: "invalidURL")
-            case .httpError(_):
-                return NSLocalizedString("Bad request", comment: "badRequest")
+          //  case .httpError(_):
+           //     return NSLocalizedString("Bad request", comment: "badRequest")
         }
     }
     

@@ -18,6 +18,7 @@ struct APIConstants {
     enum APIEndpoint {
         case register
         case login
+        case roles 
         
         var path: String {
             switch self {
@@ -25,6 +26,8 @@ struct APIConstants {
                     return "/api/register"
                 case .login:
                     return "/api/login"
+                case .roles:
+                    return "/api/roles"
             }
         }
     }

@@ -13,26 +13,29 @@ struct MessageView: View {
     @Binding var messageWrapper: MessageWrapper?
     
     var body: some View {
+        
         VStack {
-            
             if let messageWrapper {
                 switch messageWrapper.messageType {
                     case .error(let error, let guidance):
                         VStack {
                             Text(error.localizedDescription)
+                                .frame(maxWidth: .infinity, alignment: .center)
                             Text(guidance)
                         }.padding()
                             .background(.red)
                         
                     case .info(let message):
                         Text(message ?? "")
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .padding()
                             .background(.orange)
+                           
                 }
             }
-            
         }
         .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: .continuous))
+        .padding()
         .foregroundColor(.white)
         .task {
             try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
@@ -44,8 +47,8 @@ struct MessageView: View {
 
 #Preview {
     Group {
-        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .info("Please try again later."))))
-        //MessageView(messageWrapper: MessageWrapper(messageType: .error(SampleError.operationFailed, "Operation failed.")))
-        
+        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .info("Please try again later. Thank you."))))
+        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .info("Incorrect password"))))
+        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .error(SampleError.operationFailed, "Operation failed.") )))
     }
 }
