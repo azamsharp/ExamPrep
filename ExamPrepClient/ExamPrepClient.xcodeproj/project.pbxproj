@@ -88,6 +88,20 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
+		8D5554D62AB74202008F46A5 /* Faculty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Faculty;
+			sourceTree = "<group>";
+		};
+		8D5554D72AB7420A008F46A5 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
 		8DB2B6962AB01D9700ADA823 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +150,8 @@
 		8DB2B6B02AB01DC000ADA823 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8D5554D72AB7420A008F46A5 /* Student */,
+				8D5554D62AB74202008F46A5 /* Faculty */,
 				8DB2B6B12AB01E1800ADA823 /* RegistrationScreen.swift */,
 				8D193EC72AB5607100EE6F50 /* LoginScreen.swift */,
 			);

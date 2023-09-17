@@ -17,8 +17,10 @@ struct WithRouting: ViewModifier {
                     LoginScreen()
                 case .register:
                     RegistrationScreen()
-                case .dashboard:
-                    Text("Dashboard")
+                case .studentDashboard:
+                    Text("Student Dashboard")
+                case .facultyDashboard:
+                    Text("Faculty Dashboard")
             }
         }
     }

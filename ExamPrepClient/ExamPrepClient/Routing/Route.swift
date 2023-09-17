@@ -11,7 +11,8 @@ import SwiftUI
 enum Route: Hashable {
     case register
     case login
-    case dashboard 
+    case facultyDashboard
+    case studentDashboard
 }
 
 struct NavigateEnvironmentKey: EnvironmentKey {

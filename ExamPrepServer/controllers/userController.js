@@ -36,7 +36,7 @@ exports.login = async (req, res) => {
             const expirationTime = Math.floor(Date.now() / 1000) + 3600;
             // generate the jwt token 
             const token = jwt.sign({ userId: user.id, exp: expirationTime }, process.env.JWT_PRIVATE_KEY)
-            res.json({ success: true, token: token, exp: expirationTime })
+            res.json({ success: true, token: token, exp: expirationTime, roleId: user.roleId })
 
         } else {
             res.status(400).json({ success: false, message: 'Incorrect password' })

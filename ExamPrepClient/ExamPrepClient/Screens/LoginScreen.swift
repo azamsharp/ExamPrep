@@ -24,8 +24,13 @@ struct LoginScreen: View {
        
         do {
             let response = try await account.login(email: email, password: password)
-            if response.success {
-                navigate(.dashboard)
+            if let role = response.role, response.success {
+                switch role {
+                    case .faculty:
+                        navigate(.facultyDashboard)
+                    case .student:
+                        navigate(.studentDashboard)
+                }
             } else {
                 showMessage(.info(response.message))
             }
@@ -38,6 +43,7 @@ struct LoginScreen: View {
         Form {
             
             TextField("Email", text: $email)
+                .textInputAutocapitalization(.never)
             SecureField("Password", text: $password)
             
             Button(action: {

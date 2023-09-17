@@ -12,15 +12,17 @@ import Observation
 class Account {
     
     var isLoggedIn: Bool = false
+    var role: Role?
+    var availableRoles: [Role] = []
     private var httpClient: HTTPClient
     
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient
     }
     
-    func loadRoles() async throws -> [Role] {
+    func loadRoles() async throws {
         let resource = Resource(url: APIConstants.endpointURL(for: .roles), modelType: [Role].self)
-        return try await httpClient.load(resource)
+        availableRoles = try await httpClient.load(resource)
     }
     
     func login(email: String, password: String) async throws -> LoginResponse {
@@ -33,11 +35,12 @@ class Account {
         
         if response.success {
             // get the token
-            if let token = response.token, let exp = response.exp {
+            if let token = response.token, let exp = response.exp, let role = response.role {
                 // save the token in user defaults
                 UserDefaults.standard.setValue(token, forKey: "jwt")
                 UserDefaults.standard.setValue(exp, forKey: "exp")
-                isLoggedIn = true
+                self.isLoggedIn = true
+                self.role = role 
             }
         }
         
