@@ -8,7 +8,7 @@ const models = require('../models')
 
 exports.getRoles = async (req, res) => {
     const roles = await models.Role.findAll({})
-    res.json(roles)
+    res.json(roles.map(role => role.id))
 }
 
 exports.login = async (req, res) => {

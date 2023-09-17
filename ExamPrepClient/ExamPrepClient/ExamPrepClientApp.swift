@@ -17,7 +17,7 @@ struct ExamPrepClientApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $routes) {
-                LoginScreen()
+                RegistrationScreen()
                     .environment(\.navigate) { route in
                         routes.append(route)
                     }
