@@ -13,16 +13,16 @@ class Account {
     
     var isLoggedIn: Bool = false
     var role: Role?
-    var availableRoles: [Role] = []
+    
     private var httpClient: HTTPClient
     
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient
     }
     
-    func loadRoles() async throws {
+    func loadRoles() async throws -> [Role] {
         let resource = Resource(url: APIConstants.endpointURL(for: .roles), modelType: [Role].self)
-        availableRoles = try await httpClient.load(resource)
+        return try await httpClient.load(resource)
     }
     
     func login(email: String, password: String) async throws -> LoginResponse {

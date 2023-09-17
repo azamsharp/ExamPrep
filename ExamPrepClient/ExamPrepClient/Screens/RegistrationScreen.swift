@@ -17,6 +17,7 @@ struct RegistrationScreen: View {
     @State private var password: String = "password123"
     @State private var selectedRole: Role? = nil
     @State private var registering: Bool = false
+    @State private var roles: [Role] = []
     
     private var isFormValid: Bool {
         return !email.isEmptyOrWhitespace && !password.isEmptyOrWhitespace && email.isEmail
@@ -24,7 +25,7 @@ struct RegistrationScreen: View {
     
     private func loadRoles() async {
         do {
-            try await account.loadRoles()
+            roles = try await account.loadRoles()
         } catch {
             showMessage(.error(error, "Unable to load roles."))
         }
@@ -48,12 +49,14 @@ struct RegistrationScreen: View {
     
     var body: some View {
         Form {
+            
             Picker("Role", selection: $selectedRole) {
-                ForEach(account.availableRoles) { role in
+                ForEach(roles) { role in
                     Text(role.name)
                         .tag(Optional(role))
                 }
             }.pickerStyle(.segmented)
+            
             TextField("Email", text: $email)
             SecureField("Password", text: $password)
             
@@ -74,7 +77,7 @@ struct RegistrationScreen: View {
         }.navigationTitle("Registration")
             .task {
                 await loadRoles()
-                selectedRole = account.availableRoles.first { $0.name == "Student" }
+                selectedRole = roles.first { $0.name == "Student" }
             }
     }
 }
@@ -96,5 +99,4 @@ struct RegistrationContainerScreen: View {
 
 #Preview {
     RegistrationContainerScreen()
-      
 }
