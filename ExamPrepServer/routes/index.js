@@ -2,10 +2,10 @@
 const express = require('express')
 const router = express.Router() 
 const { body, validationResult } = require('express-validator') 
-const userController = require('../controllers/userController') 
+const authController = require('../controllers/authController') 
 
-router.post('/register', userController.validate('register'), userController.register)
-router.post('/login', userController.validate('login'), userController.login)
-router.get('/roles', userController.getRoles)
+router.post('/register', authController.validate('register'), authController.register)
+router.post('/login', authController.validate('login'), authController.login)
+router.get('/roles', authController.getRoles)
 
 module.exports = router 
