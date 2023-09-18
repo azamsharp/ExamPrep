@@ -23,17 +23,19 @@ struct LoginScreen: View {
     private func login() async {
        
         do {
-            let response = try await account.login(email: email, password: password)
-            if let role = response.role, response.success {
-                switch role {
+            try await account.login(email: email, password: password)
+            
+            if account.isLoggedIn {
+                switch account.role {
                     case .faculty:
                         navigate(.facultyDashboard)
                     case .student:
                         navigate(.studentDashboard)
                 }
             } else {
-                showMessage(.info(response.message))
+                showMessage(.info(account.message))
             }
+            
         } catch {
             showMessage(.error(error, MessageConstants.unableToProcessRequest))
         }
