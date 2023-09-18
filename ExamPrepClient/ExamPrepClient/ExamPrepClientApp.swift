@@ -17,7 +17,7 @@ struct ExamPrepClientApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $routes) {
-                RegistrationScreen()
+                HomeScreen()
                     .environment(\.navigate) { route in
                         routes.append(route)
                     }
@@ -27,6 +27,7 @@ struct ExamPrepClientApp: App {
                     .withRouting()
             }
             .environment(Account(httpClient: HTTPClient.shared))
+            .environment(Faculty(httpClient: HTTPClient.shared))
             .overlay(alignment: .bottom) {
                 if messageWrapper != nil {
                     MessageView(messageWrapper: $messageWrapper)
