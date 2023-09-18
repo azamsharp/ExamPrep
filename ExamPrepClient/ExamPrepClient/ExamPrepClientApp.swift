@@ -27,6 +27,7 @@ struct ExamPrepClientApp: App {
                     .withRouting()
             }
             .environment(Account(httpClient: HTTPClient.shared))
+            .environment(Faculty(httpClient: HTTPClient.shared))
             .overlay(alignment: .bottom) {
                 if messageWrapper != nil {
                     MessageView(messageWrapper: $messageWrapper)

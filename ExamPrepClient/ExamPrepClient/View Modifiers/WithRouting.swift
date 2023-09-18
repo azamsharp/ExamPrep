@@ -20,7 +20,7 @@ struct WithRouting: ViewModifier {
                 case .studentDashboard:
                     Text("Student Dashboard")
                 case .facultyDashboard:
-                    Text("Faculty Dashboard")
+                    FacultyDashboardScreen() 
             }
         }
     }
