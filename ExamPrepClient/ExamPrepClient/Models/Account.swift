@@ -11,10 +11,13 @@ import Observation
 @Observable
 class Account {
     
-    var isLoggedIn: Bool = false
-    var role: Role?
-    
+    var role: Role = .student
+    var message: String = ""
     private var httpClient: HTTPClient
+    
+    var isLoggedIn: Bool {
+        UserDefaults.standard.string(forKey: "jwt") != nil
+    }
     
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient
@@ -25,7 +28,7 @@ class Account {
         return try await httpClient.load(resource)
     }
     
-    func login(email: String, password: String) async throws -> LoginResponse {
+    func login(email: String, password: String) async throws  {
         
         let loginData = ["email": email, "password": password]
         let body = try JSONEncoder().encode(loginData)
@@ -39,12 +42,12 @@ class Account {
                 // save the token in user defaults
                 UserDefaults.standard.setValue(token, forKey: "jwt")
                 UserDefaults.standard.setValue(exp, forKey: "exp")
-                self.isLoggedIn = true
-                self.role = role 
+                self.role = role
             }
+        } else {
+            message = response.message ?? ""
         }
         
-        return response
     }
     
     func register(email: String, password: String, role: Role) async throws -> RegistrationResponse  {

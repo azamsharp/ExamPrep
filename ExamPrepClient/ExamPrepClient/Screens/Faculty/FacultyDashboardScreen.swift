@@ -12,6 +12,7 @@ struct FacultyDashboardScreen: View {
     @Environment(Faculty.self) private var faculty 
     
     var body: some View {
+
         TabView {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 .tabItem {
@@ -27,6 +28,7 @@ struct FacultyDashboardScreen: View {
                 }
               
         } .navigationTitle("Dashboard")
+
     }
 }
 
