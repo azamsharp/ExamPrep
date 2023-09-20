@@ -12,11 +12,27 @@ struct FacultyDashboardScreen: View {
     @Environment(Faculty.self) private var faculty 
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            Text("Inbox")
+                .tabItem {
+                    Label("Inbox", systemImage: "tray.fill")
+                }
+            Text("Settings")
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
+              
+        } .navigationTitle("Dashboard")
     }
 }
 
 #Preview {
-    FacultyDashboardScreen()
-        .environment(Faculty(httpClient: HTTPClient.shared))
+    NavigationStack {
+        FacultyDashboardScreen()
+            .environment(Faculty(httpClient: HTTPClient.shared))
+    }
 }
