@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct Course: Codable {
+    let id: Int
+    let name: String
+    let classCode: String 
+}
+
 struct RegistrationRequest: Codable {
     let email: String
     let password: String
