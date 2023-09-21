@@ -16,6 +16,7 @@ class Account {
     private var httpClient: HTTPClient
     
     var isLoggedIn: Bool {
+        // check when you launch the app that if the user is authenticated. Check the exp time also 
         UserDefaults.standard.string(forKey: "jwt") != nil
     }
     
