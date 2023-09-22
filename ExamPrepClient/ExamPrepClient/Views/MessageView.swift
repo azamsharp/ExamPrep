@@ -17,11 +17,10 @@ struct MessageView: View {
         VStack {
             if let messageWrapper {
                 switch messageWrapper.messageType {
-                    case .error(let error, let guidance):
+                    case .error(let error):
                         VStack {
                             Text(error.localizedDescription)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                            Text(guidance)
                         }.padding()
                             .background(.red)
                         
@@ -49,6 +48,6 @@ struct MessageView: View {
     Group {
         MessageView(messageWrapper: .constant(MessageWrapper(messageType: .info("Please try again later. Thank you."))))
         MessageView(messageWrapper: .constant(MessageWrapper(messageType: .info("Incorrect password"))))
-        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .error(SampleError.operationFailed, "Operation failed.") )))
+        MessageView(messageWrapper: .constant(MessageWrapper(messageType: .error(SampleError.operationFailed) )))
     }
 }

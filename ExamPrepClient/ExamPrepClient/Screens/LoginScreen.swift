@@ -32,12 +32,10 @@ struct LoginScreen: View {
                     case .student:
                         navigate(.studentDashboard)
                 }
-            } else {
-                showMessage(.info(account.message))
             }
-            
-        } catch {
-            showMessage(.error(error, MessageConstants.unableToProcessRequest))
+        }
+        catch {
+            showMessage(.error(error))
         }
     }
     

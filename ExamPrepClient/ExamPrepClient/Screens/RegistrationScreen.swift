@@ -27,7 +27,7 @@ struct RegistrationScreen: View {
         do {
             roles = try await account.loadRoles()
         } catch {
-            showMessage(.error(error, "Unable to load roles."))
+            showMessage(.error(error))
         }
     }
     
@@ -43,7 +43,7 @@ struct RegistrationScreen: View {
                 showMessage(.info(response.message))
             }
         } catch {
-            showMessage(.error(error, MessageConstants.unableToProcessRequest))
+            showMessage(.error(error))
         }
     }
     

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI 
 
 enum MessageType {
-    case error(Error, String)
+    case error(Error)
     case info(String?)
 }
 

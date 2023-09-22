@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct Course: Codable {
+struct CourseResponse: Codable {
+    let success: Bool
+    let courses: [Course]?
+    let message: String?
+}
+
+struct Course: Codable, Identifiable {
     let id: Int
     let name: String
-    let classCode: String 
+    let description: String 
 }
 
 struct RegistrationRequest: Codable {

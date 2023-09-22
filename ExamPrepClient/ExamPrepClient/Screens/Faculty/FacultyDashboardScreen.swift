@@ -9,32 +9,45 @@ import SwiftUI
 
 struct FacultyDashboardScreen: View {
     
-    @Environment(Faculty.self) private var faculty 
+    @Environment(\.navigate) private var navigate
+    @Environment(Faculty.self) private var faculty
+    
+    @State private var facultyRoutes: [FacultyRoutes] = []
     
     var body: some View {
-
-        TabView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                .tabItem {
+            TabView {
+                NavigationStack {
+                    FacultyMenuView()
+                        .navigationTitle("Dashboard")
+                        .navigationDestination(for: FacultyRoutes.self) { item in
+                            switch item {
+                                case .courses:
+                                    CourseListScreen() 
+                                case .exams:
+                                    Text("Add Exams")
+                                case .students:
+                                    Text("Students")
+                                    
+                            }
+                        }
+                }.tabItem {
                     Label("Home", systemImage: "house")
                 }
-            Text("Inbox")
-                .tabItem {
-                    Label("Inbox", systemImage: "tray.fill")
-                }
-            Text("Settings")
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape.fill")
-                }
               
-        } .navigationTitle("Dashboard")
-
+                Text("Inbox")
+                    .tabItem {
+                        Label("Inbox", systemImage: "tray.fill")
+                    }
+                Text("Settings")
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape.fill")
+                    }
+                
+            }
     }
 }
 
 #Preview {
-    NavigationStack {
         FacultyDashboardScreen()
             .environment(Faculty(httpClient: HTTPClient.shared))
-    }
 }

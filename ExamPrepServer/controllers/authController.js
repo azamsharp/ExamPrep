@@ -33,7 +33,7 @@ exports.login = async (req, res) => {
         let result = await bcrypt.compare(password, user.password)
         if (result) {
             // generate the expiration time = 1 hour 
-            const expirationTime = Math.floor(Date.now() / 1000) + 3600;
+            const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 60; // 60 days in seconds
             // generate the jwt token 
             const token = jwt.sign({ userId: user.id, exp: expirationTime }, process.env.JWT_PRIVATE_KEY)
             res.json({ success: true, token: token, exp: expirationTime, roleId: user.roleId })

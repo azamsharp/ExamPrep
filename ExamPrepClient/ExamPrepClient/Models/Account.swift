@@ -8,11 +8,22 @@
 import Foundation
 import Observation
 
+enum LoginError: LocalizedError {
+    
+    case invalidCredentials
+    
+    var errorDescription: String? {
+        switch self {
+            case .invalidCredentials:
+                return "Invalid credentials."
+        }
+    }
+}
+
 @Observable
 class Account {
     
     var role: Role = .student
-    var message: String = ""
     private var httpClient: HTTPClient
     
     var isLoggedIn: Bool {
@@ -35,20 +46,23 @@ class Account {
         let body = try JSONEncoder().encode(loginData)
         
         let resource = Resource(url: APIConstants.endpointURL(for: .login), method: .post(body), modelType: LoginResponse.self)
-        let response = try await httpClient.load(resource)
-        
-        if response.success {
-            // get the token
-            if let token = response.token, let exp = response.exp, let role = response.role {
-                // save the token in user defaults
-                UserDefaults.standard.setValue(token, forKey: "jwt")
-                UserDefaults.standard.setValue(exp, forKey: "exp")
-                self.role = role
+        do {
+            let response = try await httpClient.load(resource)
+            if response.success {
+                // get the token
+                if let token = response.token, let exp = response.exp, let role = response.role {
+                    // save the token in user defaults
+                    UserDefaults.standard.setValue(token, forKey: "jwt")
+                    UserDefaults.standard.setValue(exp, forKey: "exp")
+                    self.role = role
+                }
+            } else {
+                throw LoginError.invalidCredentials
             }
-        } else {
-            message = response.message ?? ""
+            
+        } catch {
+            throw error
         }
-        
     }
     
     func register(email: String, password: String, role: Role) async throws -> RegistrationResponse  {
