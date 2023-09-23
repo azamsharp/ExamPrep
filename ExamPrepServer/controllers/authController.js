@@ -14,6 +14,7 @@ exports.getRoles = async (req, res) => {
 exports.login = async (req, res) => {
 
     const { email, password } = req.body
+    console.log(email, password)
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {

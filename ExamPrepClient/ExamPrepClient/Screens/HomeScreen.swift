@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     
+    @Environment(Account.self) private var account
     @State private var selection: Selection = .register
     
     private enum Selection {
@@ -17,20 +18,29 @@ struct HomeScreen: View {
     }
     
     var body: some View {
-        VStack {
-            switch selection {
-            case .login:
-                LoginScreen()
-            case .register:
-                RegistrationScreen()
+        
+        if account.isLoggedIn {
+            switch account.role {
+                case .faculty:
+                    FacultyDashboardScreen()
+                case .student:
+                    Text("StudentDashboardScreen")
             }
-            
-            Button(selection == .register ? "Login": "Register") {
-                withAnimation {
-                    selection = selection == .register ? .login: .register
+        } else {
+            VStack {
+                switch selection {
+                case .login:
+                    LoginScreen()
+                case .register:
+                    RegistrationScreen()
+                }
+                
+                Button(selection == .register ? "Login": "Register") {
+                    withAnimation {
+                        selection = selection == .register ? .login: .register
+                    }
                 }
             }
-            
         }
     }
 }
@@ -62,4 +72,5 @@ struct HomeScreenContainerScreen: View {
 
 #Preview {
     HomeScreenContainerScreen()
+        .environment(Account(httpClient: HTTPClient.shared))
 }

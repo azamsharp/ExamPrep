@@ -25,6 +25,7 @@ struct LoginScreen: View {
         do {
             try await account.login(email: email, password: password)
             
+            /*
             if account.isLoggedIn {
                 switch account.role {
                     case .faculty:
@@ -32,7 +33,7 @@ struct LoginScreen: View {
                     case .student:
                         navigate(.studentDashboard)
                 }
-            }
+            } */
         }
         catch {
             showMessage(.error(error))

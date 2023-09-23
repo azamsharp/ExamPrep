@@ -26,10 +26,7 @@ class Account {
     var role: Role = .student
     private var httpClient: HTTPClient
     
-    var isLoggedIn: Bool {
-        // check when you launch the app that if the user is authenticated. Check the exp time also 
-        UserDefaults.standard.string(forKey: "jwt") != nil
-    }
+    var isLoggedIn: Bool = false
     
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient
@@ -41,7 +38,7 @@ class Account {
     }
     
     func login(email: String, password: String) async throws  {
-        
+        print(email, password)
         let loginData = ["email": email, "password": password]
         let body = try JSONEncoder().encode(loginData)
         
@@ -55,8 +52,10 @@ class Account {
                     UserDefaults.standard.setValue(token, forKey: "jwt")
                     UserDefaults.standard.setValue(exp, forKey: "exp")
                     self.role = role
+                    self.isLoggedIn = true 
                 }
             } else {
+                print(response.message ?? "")
                 throw LoginError.invalidCredentials
             }
             
