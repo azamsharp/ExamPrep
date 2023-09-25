@@ -19,19 +19,27 @@ class Faculty {
         self.httpClient = httpClient
     }
     
+    // create course
+    func createCourse(name: String, description: String) async throws {
+        
+        let data = ["name": name, "description": description]
+        let body = try JSONEncoder().encode(data)
+        let resource = Resource(url: APIConstants.endpointURL(for: .faculty(.courses)), method: .post(body), modelType: CourseCreateResponse.self)
+        
+        let response = try await httpClient.load(resource)
+        if response.success {
+            if let course = response.course {
+                courses.append(course)
+            }
+        } else {
+            throw NetworkError.serverError(response.message ?? MessageConstants.unableToProcessRequest)
+        }
+    }
+    
     // get all courses
     func loadCourses() async throws {
-        let resource = Resource(url: APIConstants.endpointURL(for: .faculty(.courses)), modelType: CourseResponse.self)
-        do {
-            let response = try await httpClient.load(resource)
-            if response.success {
-                courses = response.courses ?? []
-            } else {
-                throw NetworkError.serverError(response.message ?? "")
-            }
-        } catch {
-            throw error
-        }
+        let resource = Resource(url: APIConstants.endpointURL(for: .faculty(.courses)), modelType: [Course].self)
+        courses = try await httpClient.load(resource)
     }
     
 }

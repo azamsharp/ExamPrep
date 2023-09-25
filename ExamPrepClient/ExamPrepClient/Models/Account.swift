@@ -38,7 +38,6 @@ class Account {
     }
     
     func login(email: String, password: String) async throws  {
-        print(email, password)
         let loginData = ["email": email, "password": password]
         let body = try JSONEncoder().encode(loginData)
         

@@ -12,6 +12,7 @@
 		8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC72AB5607100EE6F50 /* LoginScreen.swift */; };
 		8D193ECA2AB793A400EE6F50 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC92AB793A400EE6F50 /* HomeScreen.swift */; };
 		8D26B4692ABE439B005E8499 /* CourseListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D26B4682ABE439B005E8499 /* CourseListScreen.swift */; };
+		8D4DA3022AC13FD100F876D1 /* AddCourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */; };
 		8D8C00452AB7C1F800869378 /* FacultyDashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8C00442AB7C1F800869378 /* FacultyDashboardScreen.swift */; };
 		8D8C00472AB7C37100869378 /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8C00462AB7C37100869378 /* Faculty.swift */; };
 		8DB2B6A32AB01D9700ADA823 /* ExamPrepClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2B6A22AB01D9700ADA823 /* ExamPrepClientApp.swift */; };
@@ -26,6 +27,7 @@
 		8DCCC3362AB4B349002CCF77 /* MessageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCCC3352AB4B349002CCF77 /* MessageWrapper.swift */; };
 		8DCCC3382AB4B37E002CCF77 /* ShowErrorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCCC3372AB4B37E002CCF77 /* ShowErrorKey.swift */; };
 		8DD581DD2ABBF0E000EF604D /* FacultyMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD581DC2ABBF0E000EF604D /* FacultyMenuView.swift */; };
+		8DDFA0C62ABF189600F9BB0E /* WithMessageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDFA0C52ABF189600F9BB0E /* WithMessageWrapper.swift */; };
 		8DF9E01D2AB4DB2100F8012F /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9E01C2AB4DB2100F8012F /* MessageView.swift */; };
 		8DF9E01F2AB4DFB500F8012F /* SampleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF9E01E2AB4DFB500F8012F /* SampleError.swift */; };
 		8DFE96462AB61C1B0017569B /* WithRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE96452AB61C1B0017569B /* WithRouting.swift */; };
@@ -38,6 +40,7 @@
 		8D193EC72AB5607100EE6F50 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		8D193EC92AB793A400EE6F50 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8D26B4682ABE439B005E8499 /* CourseListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListScreen.swift; sourceTree = "<group>"; };
+		8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseScreen.swift; sourceTree = "<group>"; };
 		8D8C00442AB7C1F800869378 /* FacultyDashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyDashboardScreen.swift; sourceTree = "<group>"; };
 		8D8C00462AB7C37100869378 /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
 		8DB2B69F2AB01D9700ADA823 /* ExamPrepClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExamPrepClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +56,7 @@
 		8DCCC3352AB4B349002CCF77 /* MessageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageWrapper.swift; sourceTree = "<group>"; };
 		8DCCC3372AB4B37E002CCF77 /* ShowErrorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowErrorKey.swift; sourceTree = "<group>"; };
 		8DD581DC2ABBF0E000EF604D /* FacultyMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyMenuView.swift; sourceTree = "<group>"; };
+		8DDFA0C52ABF189600F9BB0E /* WithMessageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithMessageWrapper.swift; sourceTree = "<group>"; };
 		8DF9E01C2AB4DB2100F8012F /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		8DF9E01E2AB4DFB500F8012F /* SampleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleError.swift; sourceTree = "<group>"; };
 		8DFE96452AB61C1B0017569B /* WithRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithRouting.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				8D8C00442AB7C1F800869378 /* FacultyDashboardScreen.swift */,
 				8DD581DC2ABBF0E000EF604D /* FacultyMenuView.swift */,
 				8D26B4682ABE439B005E8499 /* CourseListScreen.swift */,
+				8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */,
 			);
 			path = Faculty;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				8DFE96452AB61C1B0017569B /* WithRouting.swift */,
+				8DDFA0C52ABF189600F9BB0E /* WithMessageWrapper.swift */,
 			);
 			path = "View Modifiers";
 			sourceTree = "<group>";
@@ -294,9 +300,11 @@
 				8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */,
 				8DCCC3382AB4B37E002CCF77 /* ShowErrorKey.swift in Sources */,
 				8DCCC3292AB4A138002CCF77 /* HTTPClient.swift in Sources */,
+				8D4DA3022AC13FD100F876D1 /* AddCourseScreen.swift in Sources */,
 				8DCCC3332AB4AF54002CCF77 /* Account.swift in Sources */,
 				8DD581DD2ABBF0E000EF604D /* FacultyMenuView.swift in Sources */,
 				8DFE96482AB61C600017569B /* View+Extensions.swift in Sources */,
+				8DDFA0C62ABF189600F9BB0E /* WithMessageWrapper.swift in Sources */,
 				8DF9E01F2AB4DFB500F8012F /* SampleError.swift in Sources */,
 				8DB2B6A32AB01D9700ADA823 /* ExamPrepClientApp.swift in Sources */,
 				8D193ECA2AB793A400EE6F50 /* HomeScreen.swift in Sources */,

@@ -13,8 +13,14 @@ struct CourseResponse: Codable {
     let message: String?
 }
 
+struct CourseCreateResponse: Codable {
+    let success: Bool
+    let course: Course?
+    let message: String? 
+}
+
 struct Course: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let name: String
     let description: String 
 }

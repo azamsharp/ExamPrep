@@ -18,16 +18,10 @@ struct ExamPrepClientApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //NavigationStack(path: $routes) {
                 HomeScreen()
-              //      .environment(\.navigate) { route in
-               //         routes.append(route)
-               //     }
                     .environment(\.showMessage) { messageType in
                         messageWrapper = MessageWrapper(messageType: messageType)
                     }
-//                    .withRouting()
-  //          }
             .environment(account)
             .environment(faculty)
             .overlay(alignment: .bottom) {

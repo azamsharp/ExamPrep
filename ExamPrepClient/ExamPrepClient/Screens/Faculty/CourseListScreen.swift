@@ -9,7 +9,10 @@ import SwiftUI
 
 struct CourseListScreen: View {
     
+    @Environment(\.showMessage) private var showMessage
     @Environment(Faculty.self) private var faculty
+    
+    @State private var isPresented: Bool = false
     
     var body: some View {
         List(faculty.courses) { course in
@@ -25,9 +28,18 @@ struct CourseListScreen: View {
                 do {
                     try await faculty.loadCourses()
                 } catch {
-                    print(error.localizedDescription)
+                    showMessage(.error(error))  
                 }
             }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Add course") {
+                    isPresented = true
+                }
+            }
+        }.sheet(isPresented: $isPresented, content: {
+            AddCourseScreen() 
+        })
     }
 }
 
@@ -35,5 +47,6 @@ struct CourseListScreen: View {
     NavigationStack {
         CourseListScreen()
             .environment(Faculty(httpClient: HTTPClient.shared))
+            .withMessageWrapper()
     }
 }

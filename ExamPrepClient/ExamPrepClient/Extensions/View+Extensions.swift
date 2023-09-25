@@ -9,7 +9,12 @@ import Foundation
 import SwiftUI
 
 extension View {
+    
     func withRouting() -> some View {
         modifier(WithRouting())
+    }
+    
+    func withMessageWrapper() -> some View {
+        modifier(WithMessageWrapper())
     }
 }
