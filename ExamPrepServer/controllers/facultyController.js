@@ -16,6 +16,18 @@ exports.createCourse = async (req, res) => {
         return
     }
 
+    const course = await models.Course.findOne({
+        where: {
+            name: name
+        }
+    })
+
+    if(course) {
+        // if the course exists then return an error 
+        res.status(400).json({success: false, message: 'Course name should be unique.'})
+        return 
+    }
+
     try {
         // save the course 
         const course = await models.Course.create({
@@ -30,7 +42,6 @@ exports.createCourse = async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: 'Internal server error' })
     }
-
 }
 
 exports.getAllCourses = async (req, res) => {
@@ -39,7 +50,7 @@ exports.getAllCourses = async (req, res) => {
             userId: req.userId 
         }
     })
-    res.json({success: true, courses: courses})
+    res.json(courses)
 }
 
 exports.validate = (method) => {

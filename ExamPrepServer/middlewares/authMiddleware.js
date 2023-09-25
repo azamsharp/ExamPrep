@@ -10,6 +10,7 @@ exports.authenticate = async (req, res, next) => {
     if(authHeader) {
         // get the token out of the header 
         const token = authHeader.split(' ')[1]
+        console.log(token)
         if(token) {
             // decode the token 
             try {
