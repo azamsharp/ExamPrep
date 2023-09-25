@@ -7,16 +7,10 @@
 
 import Foundation
 
-struct CourseResponse: Codable {
-    let success: Bool
-    let courses: [Course]?
-    let message: String?
-}
-
 struct CourseCreateResponse: Codable {
     let success: Bool
     let course: Course?
-    let message: String? 
+    let message: String?
 }
 
 struct Course: Codable, Identifiable {
@@ -70,16 +64,3 @@ enum Role: Int, Codable, Identifiable {
         }
     }
 }
-
-/*
-struct Role: Codable, Identifiable , Hashable {
-    let id: Int
-    let name: String
-}
-
-extension Role {
-    
-    var isFaculty: Bool {
-        name == "Faculty"
-    }
-} */
