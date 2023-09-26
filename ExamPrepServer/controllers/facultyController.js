@@ -49,7 +49,16 @@ exports.createCourse = async (req, res) => {
     }
 }
 
-exports.getAllCourses = async (req, res) => {
+exports.getCoursesByUserId = async (req, res) => {
+
+    const errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        res.status(400).json({success: false, message: 'userId is missing or incorrect format'})
+        return 
+    }
+
+    const userId = req.params.userId 
+
     const courses = await models.Course.findAll({
         where: {
             userId: req.userId 
