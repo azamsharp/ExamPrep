@@ -23,7 +23,7 @@ struct CourseListScreen: View {
                     .font(.caption2)
             }
         }
-        .navigationTitle("Courses")
+        .navigationTitle("Courses")  
         .task {
                 do {
                     try await faculty.loadCourses()

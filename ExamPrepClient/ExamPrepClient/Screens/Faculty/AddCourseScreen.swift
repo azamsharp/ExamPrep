@@ -24,7 +24,7 @@ struct AddCourseScreen: View {
     
     private func createCourse() async {
         do {
-            try await faculty.createCourse(name: name, description: description)
+            try await faculty.createCourse(name: name.trim(), description: description.trim())
         } catch {
             showMessage(.error(error))
         }
@@ -34,10 +34,20 @@ struct AddCourseScreen: View {
         Form {
             TextField("Name", text: $name)
             TextField("Description", text: $description)
-            Button("Save") {
-               saving = true
-            }.disabled(!isFormValid)
         }
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Close") {
+                    dismiss()
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Save") {
+                    saving = true
+                }.disabled(!isFormValid)
+            }
+        })
         .task(id: saving, {
             if saving {
                 await createCourse()

@@ -13,7 +13,7 @@ struct LoginScreen: View {
     @Environment(\.navigate) private var navigate
     @Environment(Account.self) private var account
     
-    @State private var email: String = "azamsharp@gmail.com"
+    @State private var email: String = "student@gmail.com"
     @State private var password: String = "password123"
     
     private var isFormValid: Bool {
@@ -24,16 +24,6 @@ struct LoginScreen: View {
        
         do {
             try await account.login(email: email, password: password)
-            
-            /*
-            if account.isLoggedIn {
-                switch account.role {
-                    case .faculty:
-                        navigate(.facultyDashboard)
-                    case .student:
-                        navigate(.studentDashboard)
-                }
-            } */
         }
         catch {
             showMessage(.error(error))

@@ -12,6 +12,9 @@
 		8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC72AB5607100EE6F50 /* LoginScreen.swift */; };
 		8D193ECA2AB793A400EE6F50 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC92AB793A400EE6F50 /* HomeScreen.swift */; };
 		8D26B4692ABE439B005E8499 /* CourseListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D26B4682ABE439B005E8499 /* CourseListScreen.swift */; };
+		8D3FF1892AC280480032A5AD /* StudentDashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FF1882AC280480032A5AD /* StudentDashboardScreen.swift */; };
+		8D3FF18D2AC2819F0032A5AD /* StudentCourseListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FF18C2AC2819F0032A5AD /* StudentCourseListScreen.swift */; };
+		8D3FF18F2AC285890032A5AD /* EnrollCourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FF18E2AC285890032A5AD /* EnrollCourseScreen.swift */; };
 		8D4DA3022AC13FD100F876D1 /* AddCourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */; };
 		8D8C00452AB7C1F800869378 /* FacultyDashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8C00442AB7C1F800869378 /* FacultyDashboardScreen.swift */; };
 		8D8C00472AB7C37100869378 /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8C00462AB7C37100869378 /* Faculty.swift */; };
@@ -40,6 +43,9 @@
 		8D193EC72AB5607100EE6F50 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		8D193EC92AB793A400EE6F50 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8D26B4682ABE439B005E8499 /* CourseListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListScreen.swift; sourceTree = "<group>"; };
+		8D3FF1882AC280480032A5AD /* StudentDashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDashboardScreen.swift; sourceTree = "<group>"; };
+		8D3FF18C2AC2819F0032A5AD /* StudentCourseListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourseListScreen.swift; sourceTree = "<group>"; };
+		8D3FF18E2AC285890032A5AD /* EnrollCourseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollCourseScreen.swift; sourceTree = "<group>"; };
 		8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseScreen.swift; sourceTree = "<group>"; };
 		8D8C00442AB7C1F800869378 /* FacultyDashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyDashboardScreen.swift; sourceTree = "<group>"; };
 		8D8C00462AB7C37100869378 /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
@@ -115,6 +121,9 @@
 		8D5554D72AB7420A008F46A5 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				8D3FF1882AC280480032A5AD /* StudentDashboardScreen.swift */,
+				8D3FF18C2AC2819F0032A5AD /* StudentCourseListScreen.swift */,
+				8D3FF18E2AC285890032A5AD /* EnrollCourseScreen.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 				8D26B4692ABE439B005E8499 /* CourseListScreen.swift in Sources */,
 				8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */,
 				8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */,
+				8D3FF18D2AC2819F0032A5AD /* StudentCourseListScreen.swift in Sources */,
 				8DCCC3382AB4B37E002CCF77 /* ShowErrorKey.swift in Sources */,
 				8DCCC3292AB4A138002CCF77 /* HTTPClient.swift in Sources */,
 				8D4DA3022AC13FD100F876D1 /* AddCourseScreen.swift in Sources */,
@@ -310,6 +320,8 @@
 				8D193ECA2AB793A400EE6F50 /* HomeScreen.swift in Sources */,
 				8DF9E01D2AB4DB2100F8012F /* MessageView.swift in Sources */,
 				8DFE96462AB61C1B0017569B /* WithRouting.swift in Sources */,
+				8D3FF1892AC280480032A5AD /* StudentDashboardScreen.swift in Sources */,
+				8D3FF18F2AC285890032A5AD /* EnrollCourseScreen.swift in Sources */,
 				8DCCC32F2AB4A629002CCF77 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,4 +19,8 @@ extension String {
         return emailPredicate.evaluate(with: self)
     }
     
+    func trim() -> String {
+        self.trimmingCharacters(in: .whitespaces)
+    }
+    
 }

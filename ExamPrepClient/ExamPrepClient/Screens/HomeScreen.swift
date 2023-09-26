@@ -24,7 +24,7 @@ struct HomeScreen: View {
                 case .faculty:
                     FacultyDashboardScreen()
                 case .student:
-                    Text("StudentDashboardScreen")
+                    StudentDashboardScreen() 
             }
         } else {
             VStack {

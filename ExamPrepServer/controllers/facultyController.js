@@ -1,4 +1,5 @@
 
+const { Op } = require('sequelize')
 const models = require('../models')
 
 const { body, validationResult } = require('express-validator')
@@ -16,9 +17,13 @@ exports.createCourse = async (req, res) => {
         return
     }
 
+    // the same instructor cannot make the course with the same name 
     const course = await models.Course.findOne({
         where: {
-            name: name
+            name: {
+                [Op.iLike]: name 
+            },
+            userId: userId 
         }
     })
 
@@ -57,8 +62,8 @@ exports.validate = (method) => {
     switch (method) {
         case "createCourse": {
             return [
-                body('name', 'Name cannot be empty.').exists(),
-                body('description', 'Description cannot be empty.').exists()
+                body('name', 'Name cannot be empty.').exists().isLength({ min: 2 }),
+                body('description', 'Description cannot be empty.').exists().isLength({ min: 2 })
             ]
         }
 
