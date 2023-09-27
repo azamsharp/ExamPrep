@@ -28,7 +28,7 @@ struct CourseListScreen: View {
                 do {
                     try await faculty.loadCourses()
                 } catch {
-                    showMessage(.error(error))  
+                    showMessage(.error(error))
                 }
             }
         .toolbar {
@@ -38,7 +38,9 @@ struct CourseListScreen: View {
                 }
             }
         }.sheet(isPresented: $isPresented, content: {
-            AddCourseScreen() 
+            NavigationStack {
+                AddCourseScreen()
+            }
         })
     }
 }

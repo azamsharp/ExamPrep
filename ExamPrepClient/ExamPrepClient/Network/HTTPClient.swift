@@ -69,10 +69,10 @@ struct HTTPClient {
     private init() {
         let configuration = URLSessionConfiguration.default
         // for instructor
-       // configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImV4cCI6MTcwMDYwNTY2MiwiaWF0IjoxNjk1NDIxNjYyfQ.uHp_M9lLINWuGC-VdCToGgIHK4O-bpa1jsIS4TDJofc"]
+        configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImV4cCI6MTcwMDYwNTY2MiwiaWF0IjoxNjk1NDIxNjYyfQ.uHp_M9lLINWuGC-VdCToGgIHK4O-bpa1jsIS4TDJofc"]
         
         // for student
-        configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJleHAiOjE3MDA4ODA5NzcsImlhdCI6MTY5NTY5Njk3N30.YCImwLef0NGSE3z35IcN-FDApWHP4jrjuRPDK4dQHSM"]
+        //configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE1LCJleHAiOjE3MDA4ODA5NzcsImlhdCI6MTY5NTY5Njk3N30.YCImwLef0NGSE3z35IcN-FDApWHP4jrjuRPDK4dQHSM"]
         
         self.session = URLSession(configuration: configuration)
     }

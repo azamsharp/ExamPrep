@@ -11,18 +11,22 @@ struct StudentDashboardScreen: View {
     var body: some View {
         TabView {
             NavigationStack {
-                StudentCourseListScreen()
+                StudentMenuView()
                     .navigationTitle("Dashboard")
+                    .navigationDestination(for: StudentRoutes.self) { route in
+                        switch route {
+                            case .courses:
+                                StudentCourseListScreen()
+                            case .enroll:
+                                EnrollCourseScreen()
+                        }
+                    }
                    
             }
             .tabItem {
             Label("Home", systemImage: "house")
             }
             
-            Text("Grades")
-                .tabItem {
-                    Label("Grades", systemImage: "chart.bar.xaxis.ascending")
-                }
           
             Text("Inbox")
                 .tabItem {

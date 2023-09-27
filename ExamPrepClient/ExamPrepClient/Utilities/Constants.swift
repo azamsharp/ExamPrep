@@ -27,6 +27,7 @@ struct APIConstants {
         case register
         case login
         case roles
+        case availableCourses
         case faculty(Faculty)
         
         var path: String {
@@ -37,6 +38,8 @@ struct APIConstants {
                     return "/api/login"
                 case .roles:
                     return "/api/roles"
+                case .availableCourses:
+                    return "/api/courses"
                 case .faculty(let faculty):
                     switch faculty {
                         case .courses:

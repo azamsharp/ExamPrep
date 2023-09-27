@@ -14,6 +14,8 @@ struct StudentCourseListScreen: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     let courses: [String] = ["Math 100", "Math 101", "Linear Algebre 220", "Science 300"]
     
+    @State private var courseCode: String = ""
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, content: {
@@ -34,8 +36,25 @@ struct StudentCourseListScreen: View {
                 }
             }
         }.sheet(isPresented: $isPresented, content: {
-            EnrollCourseScreen() 
+            VStack {
+                Text("Enroll in a new course") 
+                    .font(.title3)
+                TextField("Course code", text: $courseCode)
+                    .textFieldStyle(.roundedBorder)
+                    .presentationDetents([.fraction(0.25)])
+                    .textInputAutocapitalization(.characters)
+                .padding()
+                HStack {
+                    Button("Cancel") {
+                        isPresented = false
+                    }
+                    Button("Save") {
+                        
+                    }
+                }
+            }
         })
+        .navigationTitle("My courses")
     }
 }
 
