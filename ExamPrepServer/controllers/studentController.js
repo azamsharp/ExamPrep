@@ -22,19 +22,39 @@ exports.enroll = async (req, res) => {
 
     if(course) {
         
-        const enrollment = await models.Enrollment.create({
-            studentId: req.userId, 
+        // check if the user is already enrolled for the course 
+        const enrollment = await models.Enrollment.findOne({
+            where: {
+                userId: req.userId, 
+                courseId: course.id 
+            }
+        })
+
+        if(enrollment) {
+            res.status(400).json({success: false, message: 'User is already enrolled in this course.'}) 
+            return 
+        }
+
+        const newEnrollment = await models.Enrollment.create({
+            userId: req.userId, 
             courseId: course.id, 
             enrollmentDate: new Date() 
         })
 
-        res.status(200).json({success: true})
+        const enrollmentWithCourse = await models.Enrollment.findByPk(newEnrollment.id, {
+            include: [
+                {
+                    model: models.Course, 
+                    as: 'course' 
+                }
+            ]
+        }) 
+
+        res.status(200).json({success: true, enrollment: { id: enrollmentWithCourse.id, course: enrollmentWithCourse.course, enrollmentDate: enrollmentWithCourse.enrollmentDate }})
 
     } else {
         res.status(400).json({success: false, message: 'Course not found.'})
     }
-
-   
 
 }
 
