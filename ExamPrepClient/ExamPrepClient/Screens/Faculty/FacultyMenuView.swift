@@ -12,6 +12,7 @@ enum FacultyRoutes: Int, Hashable, CaseIterable, Identifiable {
     case courses
     case students
     case exams
+    case signout
     
     var id: Int {
         rawValue
@@ -28,6 +29,8 @@ extension FacultyRoutes {
                 return "Students"
             case .exams:
                 return "Exams"
+            case .signout:
+                return "Signout"
         }
     }
     
@@ -39,6 +42,8 @@ extension FacultyRoutes {
                 return "graduationcap.fill"
             case .exams:
                 return "testtube.2"
+            case .signout:
+                return "heart"
         }
     }
 }
@@ -46,7 +51,7 @@ extension FacultyRoutes {
 struct FacultyMenuView: View {
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List {
                 ForEach(FacultyRoutes.allCases) { item in
                     NavigationLink(value: item) {
@@ -58,7 +63,6 @@ struct FacultyMenuView: View {
                 }
             }
         }
-        
     }
 }
 

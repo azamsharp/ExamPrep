@@ -15,39 +15,36 @@ struct FacultyDashboardScreen: View {
     @State private var facultyRoutes: [FacultyRoutes] = []
     
     var body: some View {
-            TabView {
-                NavigationStack {
-                    FacultyMenuView()
-                        .navigationTitle("Dashboard")
-                        .navigationDestination(for: FacultyRoutes.self) { item in
-                            switch item {
-                                case .courses:
-                                    CourseListScreen() 
-                                case .exams:
-                                    Text("Add Exams")
-                                case .students:
-                                    Text("Students")
-                                    
-                            }
+        
+        NavigationStack {
+            List {
+                ForEach(FacultyRoutes.allCases) { item in
+                    NavigationLink(value: item) {
+                        HStack {
+                            Image(systemName: item.icon)
+                            Text(item.title)
                         }
-                }.tabItem {
-                    Label("Home", systemImage: "house")
+                    }
                 }
-              
-                Text("Inbox")
-                    .tabItem {
-                        Label("Inbox", systemImage: "tray.fill")
-                    }
-                Text("Settings")
-                    .tabItem {
-                        Label("Settings", systemImage: "gearshape.fill")
-                    }
-                
             }
+            .navigationTitle("Dashboard")
+            .navigationDestination(for: FacultyRoutes.self) { item in
+                switch item {
+                    case .courses:
+                        CourseListScreen()
+                    case .exams:
+                        Text("Add Exams")
+                    case .students:
+                        Text("Students")
+                    case .signout:
+                        Text("Signout")
+                }
+            }
+        }
     }
 }
 
 #Preview {
-        FacultyDashboardScreen()
-            .environment(Faculty(httpClient: HTTPClient.shared))
+    FacultyDashboardScreen()
+        .environment(Faculty(httpClient: HTTPClient.shared))
 }

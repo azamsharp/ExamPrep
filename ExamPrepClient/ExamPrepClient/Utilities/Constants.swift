@@ -12,6 +12,12 @@ struct MessageConstants {
     static let invalidCredentials = "Email or password is incorrect. Please try again."
 }
 
+struct JSON {
+    struct Keys {
+        static let courseCode = "courseCode"
+    }
+}
+
 struct APIConstants {
     
     static let baseURL = "http://localhost:8080"
@@ -24,11 +30,16 @@ struct APIConstants {
             case exams
         }
         
+        enum Student {
+            case enroll
+        }
+        
         case register
         case login
         case roles
         case availableCourses
         case faculty(Faculty)
+        case student(Student)
         
         var path: String {
             switch self {
@@ -48,6 +59,11 @@ struct APIConstants {
                             return "/api/faculty/grades"
                         case .exams:
                             return "/api/faculty/exams"
+                    }
+                case .student(let student):
+                    switch student {
+                        case .enroll:
+                            return "/api/students/courses/enroll"
                     }
               
             }

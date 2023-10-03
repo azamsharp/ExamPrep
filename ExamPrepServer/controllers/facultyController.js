@@ -1,6 +1,7 @@
 
 const { Op } = require('sequelize')
 const models = require('../models')
+const { Sequelize } = require('sequelize')
 
 const { body, validationResult } = require('express-validator')
 
@@ -8,7 +9,19 @@ exports.getCoursesForFaculty = async (req, res) => {
     const courses = await models.Course.findAll({
         where: {
             userId: req.userId
-        }
+        },
+        include: [
+            {
+                model: models.Enrollment, 
+                as: 'enrollments', 
+                attributes: []
+            }
+        ], 
+        attributes: ['id', 'name', 'description', 'userId', 'courseCode', [
+            Sequelize.literal('CAST(COUNT(enrollments.id) AS INTEGER)'),
+        'enrollmentCount',
+          ]],
+        group: ['Course.id'] 
     })
 
     res.json(courses)

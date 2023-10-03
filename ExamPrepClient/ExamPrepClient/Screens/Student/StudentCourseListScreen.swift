@@ -14,7 +14,20 @@ struct StudentCourseListScreen: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     let courses: [String] = ["Math 100", "Math 101", "Linear Algebre 220", "Science 300"]
     
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.showMessage) private var showMessage
+    @Environment(Student.self) private var student
+    
     @State private var courseCode: String = ""
+    @State private var enrolling: Bool = false
+    
+    private func enroll() async {
+        do {
+            try await student.enroll(courseCode: courseCode)
+        } catch {
+            showMessage(.error(error))
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -37,19 +50,25 @@ struct StudentCourseListScreen: View {
             }
         }.sheet(isPresented: $isPresented, content: {
             VStack {
-                Text("Enroll in a new course") 
+                Text("Enroll in a new course")
                     .font(.title3)
                 TextField("Course code", text: $courseCode)
                     .textFieldStyle(.roundedBorder)
                     .presentationDetents([.fraction(0.25)])
                     .textInputAutocapitalization(.characters)
-                .padding()
+                    .padding()
                 HStack {
                     Button("Cancel") {
                         isPresented = false
                     }
-                    Button("Save") {
-                        
+                    Button("Enroll") {
+                        enrolling = true
+                    }.task(id: enrolling) {
+                        if enrolling {
+                            await enroll()
+                            enrolling = false
+                            dismiss() 
+                        }
                     }
                 }
             }
@@ -61,6 +80,9 @@ struct StudentCourseListScreen: View {
 #Preview {
     NavigationStack {
         StudentCourseListScreen()
+            .environment(Student(httpClient: HTTPClient.shared))
+            .withMessageWrapper()
+        
     }
 }
- 
+

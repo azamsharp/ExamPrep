@@ -15,6 +15,7 @@ struct ExamPrepClientApp: App {
     @State private var routes: [Route] = []
     @State private var account = Account(httpClient: HTTPClient.shared)
     @State private var faculty = Faculty(httpClient: HTTPClient.shared)
+    @State private var student = Student(httpClient: HTTPClient.shared)
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct ExamPrepClientApp: App {
                     }
             .environment(account)
             .environment(faculty)
+            .environment(student)
             .overlay(alignment: .bottom) {
                 if messageWrapper != nil {
                     MessageView(messageWrapper: $messageWrapper)

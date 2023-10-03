@@ -37,8 +37,49 @@ class Account {
         return try await httpClient.load(resource)
     }
     
+    /*
+    enum JSON: String, Codable {
+        case email
+        case password
+        
+        var key: String {
+            switch self {
+                case .email:
+                    return "email"
+                case .password:
+                    return "password"
+            }
+        }
+    } */
+    
+    struct JSON {
+        struct Keys {
+            static let email = "email"
+            static let password = "password"
+        }
+    }
+    
+    struct LoginRequest: Codable {
+        let email: String
+        let password: String
+    }
+    
+    
     func login(email: String, password: String) async throws  {
-        let loginData = ["email": email, "password": password]
+       
+        //let loginData = ["email": email, "password": password]
+        // encode login data
+        // perform HTTP POST request
+        
+        let loginData = LoginRequest(email: email, password: password)
+        // encode login data
+        // perform HTTP POST request
+        
+        
+        //let loginData = [JSON.Keys.email: email, JSON.Keys.password: password]
+        // encode login data
+        // perform HTTP POST request
+        
         let body = try JSONEncoder().encode(loginData)
         
         let resource = Resource(url: APIConstants.endpointURL(for: .login), method: .post(body), modelType: LoginResponse.self)

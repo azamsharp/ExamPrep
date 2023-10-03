@@ -7,6 +7,19 @@
 
 import Foundation
 
+
+struct StudentCourseEnrollResponse: Codable {
+    let success: Bool
+    let message: String?
+    let enrollment: Enrollment?
+}
+
+struct Enrollment: Codable {
+    let id: Int
+    let enrollmentDate: Date
+    let course: Course
+}
+
 struct CourseCreateResponse: Codable {
     let success: Bool
     let course: Course?
@@ -17,6 +30,8 @@ struct Course: Codable, Identifiable {
     let id: Int?
     let name: String
     let description: String 
+    let courseCode: String
+    let enrollmentCount: Int? 
 }
 
 struct RegistrationRequest: Codable {

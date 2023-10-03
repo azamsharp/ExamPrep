@@ -16,21 +16,32 @@ struct CourseListScreen: View {
     
     var body: some View {
         List(faculty.courses) { course in
-            VStack(alignment: .leading) {
-                Text(course.name)
-                    .font(.headline)
-                Text(course.description)
-                    .font(.caption2)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(course.name)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                    Text(course.description)
+                        .font(.caption2)
+                    Text(course.courseCode)
+                        .font(.headline)
+                        .foregroundStyle(.gray)
+                    if let enrollmentCount = course.enrollmentCount, enrollmentCount > 0 {
+                        Text("^[\(enrollmentCount) Student](inflect: true)")
+                            .font(.caption2)
+                    }
+                }
+                
             }
         }
-        .navigationTitle("Courses")  
+        .navigationTitle("Courses")
         .task {
-                do {
-                    try await faculty.loadCourses()
-                } catch {
-                    showMessage(.error(error))
-                }
+            do {
+                try await faculty.loadCourses()
+            } catch {
+                showMessage(.error(error))
             }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Add course") {
