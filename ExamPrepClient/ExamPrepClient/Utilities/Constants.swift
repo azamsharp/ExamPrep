@@ -15,6 +15,8 @@ struct MessageConstants {
 struct JSON {
     struct Keys {
         static let courseCode = "courseCode"
+        static let email = "email"
+        static let password = "password"
     }
 }
 

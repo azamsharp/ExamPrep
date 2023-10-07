@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-
+/*
+ 
+ 
 enum FacultyRoutes: Int, Hashable, CaseIterable, Identifiable {
     
     case courses
@@ -69,3 +71,4 @@ struct FacultyMenuView: View {
 #Preview {
     FacultyMenuView()
 }
+*/

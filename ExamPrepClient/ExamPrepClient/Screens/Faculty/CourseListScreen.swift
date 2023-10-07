@@ -4,7 +4,7 @@
 //
 //  Created by Mohammad Azam on 9/22/23.
 //
-
+/*
 import SwiftUI
 
 struct CourseListScreen: View {
@@ -34,7 +34,6 @@ struct CourseListScreen: View {
                 
             }
         }
-        .navigationTitle("Courses")
         .task {
             do {
                 try await faculty.loadCourses()
@@ -62,4 +61,4 @@ struct CourseListScreen: View {
             .environment(Faculty(httpClient: HTTPClient.shared))
             .withMessageWrapper()
     }
-}
+} */

@@ -52,12 +52,7 @@ class Account {
         }
     } */
     
-    struct JSON {
-        struct Keys {
-            static let email = "email"
-            static let password = "password"
-        }
-    }
+   
     
     struct LoginRequest: Codable {
         let email: String

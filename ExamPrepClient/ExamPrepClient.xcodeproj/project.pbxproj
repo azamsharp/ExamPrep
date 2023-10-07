@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D13288D2AB09FFE002C1217 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D13288C2AB09FFE002C1217 /* String+Extensions.swift */; };
+		8D179D202AD10BB100744B80 /* CourseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D179D1F2AD10BB100744B80 /* CourseDetailScreen.swift */; };
 		8D193EC62AB5323F00EE6F50 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC52AB5323F00EE6F50 /* Route.swift */; };
 		8D193EC82AB5607100EE6F50 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC72AB5607100EE6F50 /* LoginScreen.swift */; };
 		8D193ECA2AB793A400EE6F50 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D193EC92AB793A400EE6F50 /* HomeScreen.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		8D13288C2AB09FFE002C1217 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		8D179D1F2AD10BB100744B80 /* CourseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailScreen.swift; sourceTree = "<group>"; };
 		8D193EC52AB5323F00EE6F50 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		8D193EC72AB5607100EE6F50 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		8D193EC92AB793A400EE6F50 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				8DD581DC2ABBF0E000EF604D /* FacultyMenuView.swift */,
 				8D26B4682ABE439B005E8499 /* CourseListScreen.swift */,
 				8D4DA3012AC13FD100F876D1 /* AddCourseScreen.swift */,
+				8D179D1F2AD10BB100744B80 /* CourseDetailScreen.swift */,
 			);
 			path = Faculty;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				8DCCC3312AB4AB2F002CCF77 /* DTOs.swift in Sources */,
 				8DCCC32C2AB4A37D002CCF77 /* HTTPClientKey.swift in Sources */,
 				8DCCC3362AB4B349002CCF77 /* MessageWrapper.swift in Sources */,
+				8D179D202AD10BB100744B80 /* CourseDetailScreen.swift in Sources */,
 				8DB2B6B22AB01E1800ADA823 /* RegistrationScreen.swift in Sources */,
 				8D8C00452AB7C1F800869378 /* FacultyDashboardScreen.swift in Sources */,
 				8D26B4692ABE439B005E8499 /* CourseListScreen.swift in Sources */,
